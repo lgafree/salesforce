@@ -1,0 +1,10 @@
+trigger NotLessThan3Years on Contract2__c (before update) {
+    String profileName = [SELECT Name FROM Profile WHERE Id = :UserInfo.getProfileId()].Name;  
+    String recordType = [SELECT Name FROM RecordType WHERE Id = :Trigger.New[0].RecordTypeId].Name;
+    
+    If(profileName == 'Coordinator' && recordType == 'Long Term'){
+        IF(Trigger.NEW[0].End_Date__c.year() - Trigger.NEW[0].Start_Date__c.year() < 3){
+            Trigger.New[0].addError('Long Term Contracts need to be greater than 3 years');
+        }
+    } 
+}
