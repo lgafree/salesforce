@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vote Registration</title>
+</head>
+<body>
+    
+    <div id="form-container">
+        <form action="" id="VRForm">
+            <h1 id="title">Voters Registration Form</h1>
+            <input class="field" type="text" id="name" placeholder="Name">
+            <input class="field" type="date" id="dob" placeholder="Date of Birth">
+            <input class="field" type="text" id="username" placeholder="Username">
+            <input class="field" type="password" id="password" placeholder="Password">
+            <button type="button" id="submit" onclick="validate()">Submit</button>
+        </form>
+
+        <div id="error-box">
+            <ul id="errors">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

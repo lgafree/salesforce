@@ -1,0 +1,46 @@
+body{
+    background-color: #603F83FF;
+}
+
+#title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#form-container{
+    background-color: #C7D3D4FF;   
+    border: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 30px 30px;
+    width: 30%;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#VRForm{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#submit{
+    margin-top: 5px;
+    border-style:none;
+    border-radius: 5px 2px 5px 2px;
+    background-color: rgb(19 171 87);
+    color: whitesmoke;
+}
+
+.field{
+    border-radius: 5px;
+    border-style: none;
+    padding: 5px;
+}
+
+.error{
+    color: rgb(184, 16, 16)
+}

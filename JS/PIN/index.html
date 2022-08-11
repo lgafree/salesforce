@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PIN</title>
+</head>
+<body>
+    
+    <div id="form-container">
+        <form action="" id="PINForm">
+            <h1 id="title">Personal Identification Form</h1>
+            <input class="field" type="text" id="name" placeholder="Name">
+            <input class="field" type="date" id="dob" placeholder="Date of Birth">
+            <input class="field" type="tel" id="contact" pattern="[+]{1}[0-9]{11,14}" placeholder="Contact Number">
+            <button type="button" id="submit" onclick="check()">Submit</button>
+        </form>
+
+        <div id="error-box">
+            <ul id="errors">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
