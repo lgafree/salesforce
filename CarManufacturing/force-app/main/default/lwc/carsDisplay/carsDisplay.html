@@ -1,0 +1,36 @@
+<template>
+    <c-users onprofilechanged={handleProfileChanged}></c-users>
+    <template if:true={isCustomerSelected}>
+        <c-customer oncustomerchanged={handleCustomerChanged}></c-customer>
+    </template>
+    <template if:true={hasPermission}>
+        <div class="slds-grid slds-grid_vertical-stretch slds-wrap slds-gutters">
+            <template for:each={carModelList} for:item="carModel">
+                <div key={carModel.Id} class="slds-size_1-of-3 slds-m-vertical_small slds-col">
+                    <lightning-card title={carModel.Name}>
+                        <template if:true={isEditButtonVisible}>
+                            <lightning-button data-id={carModel.Id} label="Edit" slot="actions" onclick={handleEditClick}></lightning-button>
+                        </template>
+                        <template if:true={modalVisible}>
+                            <c-Modal title="Car Model" record-id={selectCarModelId} mode={mode} onclose={closeModal}></c-Modal>
+                        </template>
+                        <div class="slds-p-horizontal_xx-small" style="height:350px">
+                            <img class="slds-align_absolute-center" src={carModel.Image__c}/>
+                        </div>  
+                        <h1 class="slds-text-align_center">Php {carModel.Price__c}</h1>
+                        <template if:true={isCustomerSelected}>
+                            <lightning-button data-id={carModel.Id} class="slds-align_absolute-center" label="Buy" onclick={handleBuyClick}></lightning-button>
+                        </template>
+                            <!-- <p class="slds-m-horizontal_small">Card Body (custom component)</p>
+                            <p slot="footer">Card Footer</p> -->
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+    <template if:true={hasNoPermission}>
+        <lightning-card  title="Access Denied">
+            <h3>Current profile has no permission</h3>
+        </lightning-card>
+    </template>
+</template>

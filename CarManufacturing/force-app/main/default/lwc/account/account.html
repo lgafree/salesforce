@@ -1,0 +1,24 @@
+<template>
+    <c-users onprofilechanged={handleProfileChanged}></c-users>
+    <template if:true={hasPermission}>
+        <lightning-card  title="Accounts">
+             <lightning-button label="New" class="slds-float_right" slot="actions" onclick={handleNewAction}></lightning-button>
+             <template if:true={modalVisible}>
+                <c-Modal title="Account" record-id={selectedRecordId} mode={mode} onclose={closeModal}></c-Modal>
+            </template>
+        </lightning-card>
+        <lightning-datatable
+            key-field="id"
+            data={accountList}
+            columns={columns}
+            mode="edit"
+            onrowaction={handleRowAction}>
+        </lightning-datatable>       
+    
+    </template>
+    <template if:true={hasNoPermission}>
+        <lightning-card  title="Access Denied">
+            <h3>Current profile has no permission</h3>
+        </lightning-card>
+    </template> 
+</template>
