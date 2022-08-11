@@ -1,0 +1,143 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="searchCases">
+    <aura:attribute type="Case" name="caseList"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.fetchCases}"/> -->
+
+    <lightning:card title="Relevant Case">
+        <lightning:input 
+            aura:id="enter-search"
+            name="enter-search"
+            placeholder="Case Subject"
+            type="search"/>
+        <lightning:button label="Search" onclick="{!c.fetchCases}"/>
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+            <thead>
+               <tr class="slds-line-height_reset">
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Case Number</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Subject</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Account Name</div>
+                  </th>
+                  <th class="" scope="col">
+                    <div class="slds-truncate">Contact Name</div>
+                 </th>
+               </tr>
+            </thead>
+            
+            <tbody>   
+                <aura:iteration items="{!v.caseList}" var="item">
+                  <tr class="slds-hint-parent" key="{!item.Id}">
+                     <td>
+                        <div class="slds-truncate">{!item.CaseNumber}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{!item.Subject}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                           <!-- <a onclick={navigateToAccount}>{!item.Account.Name}</a> -->
+                           <div class="slds-truncate">{!item.Account.Name}</div>
+                        </div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <!-- <a onclick={navigateToAccount}>{!item.Contact.Name}</a> -->
+                            <div class="slds-truncate">{!item.Contact.Name}</div>
+                        </div>
+                     </td>
+                  </tr>
+                </aura:iteration>
+            </tbody>
+         </table>
+    </lightning:card> 
+
+    <lightning:card title="Account Record">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+            <thead>
+               <tr class="slds-line-height_reset">
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Name</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" >Phone</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Industry</div>
+                  </th>
+                  <th class="" scope="col">
+                    <div class="slds-truncate">Type</div>
+                 </th>
+               </tr>
+            </thead>
+            
+            <tbody>   
+                <aura:iteration items="{!v.caseList}" var="item">
+                  <tr class="slds-hint-parent" key="{!item.Id}">
+                     <td>
+                        <div class="slds-truncate">{!item.Account.Name}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{!item.Account.Phone}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{!item.Account.Industry}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{!item.Account.Type}</div>
+                        </div>
+                     </td>
+                  </tr>
+                </aura:iteration>
+            </tbody>
+         </table>
+    </lightning:card>
+
+    <lightning:card title="Contact Record">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+            <thead>
+               <tr class="slds-line-height_reset">
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Name</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Phone</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate">Email</div>
+                  </th>
+                  <th class="" scope="col">
+                    <div class="slds-truncate">Account Name</div>
+                 </th>
+               </tr>
+            </thead>
+            
+            <tbody>   
+               <aura:iteration items='{!v.caseList}' var="item">
+                  <tr class="slds-hint-parent" key="{!item.Id}">
+                     <td>
+                        <div class="slds-truncate">{!item.Contact.Name}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{!item.Contact.Phone}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{!item.Contact.Email}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{!item.Account.Name}</div>
+                        </div>
+                     </td>
+                  </tr>
+               </aura:iteration>
+            </tbody>
+         </table>
+    </lightning:card>
+</aura:component>	
