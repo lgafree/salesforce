@@ -1,0 +1,9 @@
+trigger BeforeCreateQuotation on Quotation__c (before insert) {
+    for(Quotation__c q :trigger.old){
+        List<Quotation__c> quotationList = [Select id From Quotation__c Where Booking_Ref__c = :q.Booking_Ref__c];
+        
+        if(quotationList.isEmpty()){
+            q.addError('Only one quotation is allowed per Property Booking');
+        }
+    }
+}
