@@ -1,0 +1,137 @@
+<template>
+    <lightning-card title="Case Detail">
+        <div class="slds-p-left_small">
+            <lightning-input type="text" placeholder="Case Subject"></lightning-input>
+            <lightning-button variant="brand" label="Search" onclick={handleSearchKeyword}></lightning-button>
+        </div>
+
+        <lightning-card title="Relevant Case" class="slds-box">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                <thead>
+                   <tr class="slds-line-height_reset">
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="First Name">Case Number</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Last Name">Subject</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Phone">Account Name</div>
+                      </th>
+                      <th class="" scope="col">
+                        <div class="slds-truncate" title="Phone">Contact Name</div>
+                     </th>
+                   </tr>
+                </thead>
+                
+                <tbody>   
+                   <template for:each={casesRecord} for:item="cas">
+                      <tr class="slds-hint-parent" key={cas.Id}>
+                         <td>
+                            <div class="slds-truncate">{cas.CaseNumber}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">{cas.Subject}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">
+                               <!-- <lightning-formatted-phone value={cas.Account.Name} ></lightning-formatted-phone> -->
+                               <a onclick={navigateToAccount}>{cas.Account.Name}</a>
+                            </div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">
+                               <lightning-formatted-phone value={cas.Contact.Name} ></lightning-formatted-phone>
+                            </div>
+                         </td>
+                      </tr>
+                   </template>
+                </tbody>
+             </table>
+        </lightning-card>
+
+        <lightning-card title="Account Record" class="slds-box">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                <thead>
+                   <tr class="slds-line-height_reset">
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="First Name">Name</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Last Name">Phone</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Phone">Industry</div>
+                      </th>
+                      <th class="" scope="col">
+                        <div class="slds-truncate" title="Phone">Type</div>
+                     </th>
+                   </tr>
+                </thead>
+                
+                <tbody>   
+                   <template for:each={casesRecord} for:item="cas">
+                      <tr class="slds-hint-parent" key={cas.Id}>
+                         <td>
+                            <div class="slds-truncate">{cas.Account.Name}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">{cas.Account.Phone}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">{cas.Account.Industry}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">
+                                <div class="slds-truncate">{cas.Account.Type}</div>
+                            </div>
+                         </td>
+                      </tr>
+                   </template>
+                </tbody>
+             </table>
+        </lightning-card>
+
+        <lightning-card title="Contact Record" class="slds-box">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                <thead>
+                   <tr class="slds-line-height_reset">
+                      <th class="" scope="col">
+                         <div class="slds-truncate">Name</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate">Phone</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate">Email</div>
+                      </th>
+                      <th class="" scope="col">
+                        <div class="slds-truncate">Account Name</div>
+                     </th>
+                   </tr>
+                </thead>
+                
+                <tbody>   
+                   <template for:each={casesRecord} for:item="cas">
+                      <tr class="slds-hint-parent" key={cas.Id}>
+                         <td>
+                            <div class="slds-truncate">{cas.Contact.Name}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">{cas.Contact.Phone}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">{cas.Contact.Email}</div>
+                         </td>
+                         <td>
+                            <div class="slds-truncate">
+                                <div class="slds-truncate">{cas.Account.Name}</div>
+                            </div>
+                         </td>
+                      </tr>
+                   </template>
+                </tbody>
+             </table>
+        </lightning-card>
+    </lightning-card>
+</template>
