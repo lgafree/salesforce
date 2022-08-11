@@ -1,0 +1,19 @@
+trigger PropertyBooking on Property_Booking__c (after update) {
+    for(Property_Booking__c pb :trigger.new){
+     if(pb.Status__c == 'Approved'){    
+        Quotation__c q = new Quotation__c(Booking_Ref__c=pb.Name,
+                                   Property_Name__c=pb.Property__r.Name,
+                                   Property_Type__c=pb.Property__r.Type__c,
+                                   Customer_Name__c=pb.Customer__r.Name,
+                                   Acquire_Property_By__c=pb.Acquire_Property_By__c,
+                                   Price__c=pb.Quoted_Price__c,
+                                   Quoted_To_Customer__c=false,
+                                   Customer_Email__c=pb.Customer__r.Email__c);
+        insert q;
+
+        pb.Quotation_Generated__c = true;
+        
+        update pb;
+    }   
+    }
+}
